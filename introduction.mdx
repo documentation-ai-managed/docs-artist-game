@@ -1,0 +1,103 @@
+---
+title: Introduction to Artist Game
+description: Get an overview of Artist Game, a documentation management platform designed to help teams organize and maintain project docs efficiently.
+---
+
+## Overview
+
+Artist Game empowers teams to create, organize, and maintain project documentation effortlessly. You get a centralized space to build structured docs with Markdown, MDX components, and version control integration. Whether you manage technical specs, user guides, or onboarding materials, Artist Game streamlines collaboration and keeps your knowledge base up-to-date.
+
+<Callout kind="info">
+Artist Game supports real-time editing, search across docs, and custom themes to match your brand.
+</Callout>
+
+## Key Features
+
+Artist Game offers powerful tools to supercharge your documentation workflow. Explore these core capabilities:
+
+<Columns cols={3}>
+  <Card title="Structured Organization" icon="layers" href="#organization">
+    Nest pages, use sidebars, and create collections for easy navigation.
+  </Card>
+  <Card title="Rich Components" icon="components" href="#components">
+    Embed interactive elements like tabs, steps, and code examples directly in MDX.
+  </Card>
+  <Card title="Team Collaboration" icon="users" href="#collaboration">
+    Invite members, track changes, and merge updates seamlessly.
+  </Card>
+</Columns>
+
+## Quick Navigation Guide
+
+Get up and running in minutes. Follow these steps to explore Artist Game:
+
+<Steps>
+  <Step title="Create Your Space" icon="plus">
+    Sign up at `https://app.artistgame.com` and start a new documentation project.
+  </Step>
+  <Step title="Add Your First Page" icon="file-text">
+    Click "New Page" and use the editor to write in Markdown or MDX.
+  </Step>
+  <Step title="Organize with Sidebar" icon="menu">
+    Drag pages into collections and generate automatic navigation.
+  </Step>
+  <Step title="Publish and Share" icon="globe">
+    Deploy your site and share the live URL with your team.
+  </Step>
+</Steps>
+
+For a hands-on example, initialize a project using the CLI:
+
+<CodeGroup tabs="npm,yarn">
+  ```bash
+  npm create artistgame@latest my-docs
+  cd my-docs
+  npm run dev
+  ```
+  ```bash
+  yarn create artistgame my-docs
+  cd my-docs
+  yarn dev
+  ```
+</CodeGroup>
+
+## Use Cases for Teams
+
+Artist Game adapts to various team needs. Switch between scenarios to see relevant examples:
+
+<Tabs>
+  <Tab title="Software Teams" icon="code">
+    Maintain API references, changelogs, and deployment guides. Use components like `<Request>` and `<Response>` for endpoint docs.
+    
+    Example API integration:
+    
+    ````javascript
+    const response = await fetch('https://api.example.com/docs', {
+      headers: { Authorization: 'Bearer YOUR_TOKEN' }
+    });
+    ````
+  </Tab>
+  <Tab title="Marketing Teams" icon="megaphone">
+    Build product landing pages, feature overviews, and customer stories with cards and images.
+  </Tab>
+  <Tab title="Support Teams" icon="headphones">
+    Create FAQs with `<ExpandableGroup>` and troubleshooting steps for self-service help.
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+Ready to dive deeper? Choose your path:
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="zap" href="/quickstart">
+    Set up your first project in under 5 minutes.
+  </Card>
+  <Card title="Authentication" icon="lock" href="/authentication">
+    Secure your docs with API keys and OAuth.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+Start with the Quickstart guide to build your site today. Customize with your brand color `#3B82F6` for a professional look.
+</Callout>

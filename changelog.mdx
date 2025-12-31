@@ -1,0 +1,164 @@
+---
+title: Changelog
+description: Review the release history of Artist Game, including new features, improvements, and fixes.
+---
+
+## Release History
+
+Artist Game releases follow semantic versioning. You receive notifications for new versions through the dashboard at `https://dashboard.example.com`. Check this changelog for details on changes, new features, and migration steps.
+
+Stay updated by subscribing to release notes in your account settings.
+
+<Callout kind="info">
+  Breaking changes appear with the `breaking` tag. Review migration notes before upgrading.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added multiplayer canvas collaboration for up to 8 artists
+- Introduced AI-assisted brush suggestions based on stroke analysis
+- New export formats: SVG and high-res PNG with layers
+
+## Improvements
+
+- Optimized rendering engine for `<60ms` latency on mobile devices
+- Enhanced undo/redo stack to support 100+ actions
+
+## Bug Fixes
+
+- Fixed canvas lag during zoom operations
+- Resolved color picker crash on touch devices
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Real-time leaderboard for daily art challenges
+- Custom brush library import/export via JSON
+
+## Improvements
+
+- Dashboard now loads 40% faster with lazy-loaded galleries
+
+## Bug Fixes
+
+- Fixed authentication token refresh loop
+- Corrected brush opacity persistence across sessions
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core drawing engine with pressure-sensitive strokes
+- User authentication via OAuth and API keys
+- Gallery sharing with public/private toggles
+
+## Breaking Changes
+
+- Switched from `canvasId` to `sessionId` for all endpoints
+
+## Bug Fixes
+
+- Initial stability improvements for browser compatibility
+
+</Update>
+
+## Upgrading to the Latest Version
+
+Follow these steps to upgrade your Artist Game integration.
+
+<Steps>
+  <Step title="Backup Your Data" icon="database">
+
+    Export your current configuration and artworks.
+
+    ```
+    curl -H "Authorization: Bearer YOUR_TOKEN" \
+         https://api.example.com/v1/export \
+         -o backup.json
+    ```
+
+  </Step>
+  <Step title="Update SDK" icon="download">
+
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm install artist-game@latest
+````
+      </Tab>
+      <Tab title="yarn" icon="package">
+````bash
+yarn add artist-game@latest
+````
+      </Tab>
+    </Tabs>
+
+  </Step>
+  <Step title="Migrate Breaking Changes" icon="settings">
+
+    Update `canvasId` references to `sessionId`.
+
+    <CodeGroup tabs="JavaScript,Python">
+```javascript
+// Old
+const canvas = await artistGame.init({ canvasId: 'abc123' });
+
+// New
+const session = await artistGame.init({ sessionId: 'abc123' });
+```
+```python
+# Old
+canvas = artist_game.init(canvas_id="abc123")
+
+# New
+session = artist_game.init(session_id="abc123")
+```
+    </CodeGroup>
+
+  </Step>
+  <Step title="Test Integration" icon="play-circle">
+
+    Run your automated tests and verify multiplayer features.
+
+  </Step>
+</Steps>
+
+## Migration Notes for v1.2.0
+
+If upgrading from v1.0.x, note these key changes:
+
+| Change | Impact | Action |
+|--------|--------|--------|
+| `canvasId` → `sessionId` | Breaking | Update all API calls and SDK init |
+| New multiplayer endpoints | Feature | Use `/v1/sessions/{sessionId}/collaborate` |
+| Brush export JSON schema | Improvement | Versioned at `schemaVersion: 2` |
+
+<Expandable title="Advanced Migration Details" default-open="false">
+
+For custom integrations, regenerate your `artist-game-config.json` file.
+
+```json
+{
+  "apiKey": "YOUR_API_KEY",
+  "sessionId": "{SESSION_ID}",
+  "features": {
+    "multiplayer": true,
+    "aiBrushes": true
+  }
+}
+```
+
+Test with the sandbox at `https://dashboard.example.com/sandbox`.
+
+</Expandable>
+
+<Callout kind="tip">
+  Join the Discord community for migration support: discord.gg/artistgame
+</Callout>
